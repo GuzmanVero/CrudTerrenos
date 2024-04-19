@@ -1,0 +1,201 @@
+CREATE DATABASE CostaDelSol;
+
+USE CostaDelSol;
+
+CREATE TABLE Usuario(
+	UsuarioID INT PRIMARY KEY IDENTITY,
+	Email VARCHAR(100) NOT NULL,
+	Clave VARCHAR(200) NOT NULL
+)
+
+CREATE TABLE Rol(
+	RolID INT PRIMARY KEY IDENTITY,
+	Rol nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE Cliente (
+    ClienteID INT PRIMARY KEY IDENTITY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Direccion NVARCHAR(255) NOT NULL,
+    Telefono NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+	UsuarioID INT,
+	RolID INT,
+	FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
+	FOREIGN KEY (RolID) REFERENCES Rol(RolID)
+);
+
+CREATE TABLE Propietario (
+    PropietarioID INT PRIMARY KEY IDENTITY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Direccion NVARCHAR(255) NOT NULL,
+    Telefono NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Posicion(
+	PosicionID INT PRIMARY KEY IDENTITY,
+	Posicion nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE Area(
+	AreaID INT PRIMARY KEY IDENTITY,
+	Area nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE Empleado (
+    EmpleadoID INT PRIMARY KEY IDENTITY,
+    Nombre NVARCHAR(100 ) NOT NULL,
+	Apellido NVARCHAR(100) NOT NULL,
+	Direccion NVARCHAR(255) NOT NULL,
+    PosicionID INT NOT NULL,
+    AreaID INT NOT NULL,
+    Teléfono NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+	SaldoNeto DECIMAL(19,4) NOT NULL,
+	SaldoLiquido DECIMAL(19,4) NOT NULL,
+	UsuarioID INT ,
+	RolID INT NOT NULL,
+	FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
+	FOREIGN KEY (RolID) REFERENCES Rol(RolID),
+	FOREIGN KEY (PosicionID) REFERENCES Posicion(PosicionID),
+	FOREIGN KEY (AreaID) REFERENCES Area(AreaID)
+);
+
+CREATE TABLE Tipo(
+	TipoID INT PRIMARY KEY IDENTITY,
+	Tipo nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE Departamento(
+	DepartamentoID INT PRIMARY KEY IDENTITY,
+	Departamento nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE Distrito(
+	DistritoID INT PRIMARY KEY IDENTITY,
+	Distrito nvarchar(50) NOT NULL,
+	DepartamentoID INT NOT NULL,
+	FOREIGN KEY (DepartamentoID) REFERENCES Departamento(DepartamentoID)
+);
+
+CREATE TABLE Terreno (
+    TerrenoID INT PRIMARY KEY IDENTITY,
+	NombreTerreno NVARCHAR(50) NOT NULL,
+    TipoID INT NOT NULL,
+	Extencion FLOAT NOT NULL,
+    Descripcion NVARCHAR(255) NOT NULL,
+    Precio DECIMAL(19,4) NOT NULL,
+    Estado NVARCHAR(20) CHECK (Estado IN ('Disponible', 'Vendido', 'Rentado')) NOT NULL,
+	DistritoID INT NOT NULL,
+	PropietarioID INT,
+	FOREIGN KEY (PropietarioID) REFERENCES Propietario(PropietarioID),
+	FOREIGN KEY (TipoID) REFERENCES Tipo(TipoID),
+	FOREIGN KEY (DistritoID) REFERENCES Distrito(DistritoID)
+);
+
+CREATE TABLE Marca(
+	MarcaID INT PRIMARY KEY IDENTITY,
+	Marca nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE Carro (
+    CarroID INT PRIMARY KEY IDENTITY,
+    MarcaID INT NOT NULL,
+	Modelo NVARCHAR(50) ,
+	Color NVARCHAR(50) NOT NULL,
+    Descripción NVARCHAR(255) NOT NULL,
+    Precio DECIMAL(19,4) NOT NULL,
+    Estado NVARCHAR(20) CHECK (Estado IN ('Disponible', 'Vendido', 'Rentado')) NOT NULL,
+	PropietarioID INT,
+	FOREIGN KEY (PropietarioID) REFERENCES Propietario(PropietarioID),
+	FOREIGN KEY (MarcaID) REFERENCES Marca(MarcaID)
+);
+
+CREATE TABLE Producto(
+	ProductoID INT PRIMARY KEY IDENTITY,
+	TerrenoID INT,
+	CarroID INT,
+	FOREIGN KEY (TerrenoID) REFERENCES Terreno(TerrenoID),
+	FOREIGN KEY (CarroID) REFERENCES Carro(CarroID)
+);
+
+CREATE TABLE Transaccion(
+    TransaccionID INT PRIMARY KEY IDENTITY,
+    ClienteID INT NOT NULL,
+    EmpleadoID INT NOT NULL,
+    ProductoID INT,
+    Tipo NVARCHAR(50) CHECK (Tipo IN ('Compra', 'Renta')) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Monto DECIMAL(19,4) NOT NULL,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (EmpleadoID) REFERENCES Empleado(EmpleadoID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (ProductoID) REFERENCES Producto(ProductoID)
+);
+
+CREATE TABLE Subasta (
+    SubastaID INT PRIMARY KEY IDENTITY,
+    ProductoID INT,
+    FechaInicio DATETIME NOT NULL,
+    FechaFin DATETIME NOT NULL,
+    PrecioInicial DECIMAL(19,4) NOT NULL,
+    FOREIGN KEY (ProductoID) REFERENCES Producto(ProductoID)
+);
+
+CREATE TABLE Participaciones (
+    ParticipaciónID INT PRIMARY KEY IDENTITY,
+    ClienteID INT NOT NULL,
+    SubastaID INT NOT NULL,
+    Oferta DECIMAL(19,4) NOT NULL,
+    FechaOferta DATETIME NOT NULL,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
+    FOREIGN KEY (SubastaID) REFERENCES Subasta(SubastaID)
+);
+
+create proc RegistroUsuario(
+    @Nombre NVARCHAR(100),
+    @Direccion NVARCHAR(255),
+    @Telefono NVARCHAR(20),
+    @Email VARCHAR(100),
+    @Clave VARCHAR(500),
+    @Registrado bit output,
+    @Mensaje VARCHAR(100) output
+)
+as
+begin
+    -- Comprobar si ya existe el correo en Usuario o Cliente
+    if (not exists (select * from Usuario where Email = @Email) and
+        not exists (select * from Cliente where Email = @Email))
+    begin
+        -- Insertar en Usuario
+        insert into Usuario (Email, Clave) values (@Email, @Clave);
+        
+        -- Obtener el UsuarioID generado
+        declare @UsuarioID int;
+        set @UsuarioID = scope_identity();
+
+        -- Insertar en Cliente con el UsuarioID generado y RolID
+        insert into Cliente (Nombre, Direccion, Telefono, Email, UsuarioID, RolID)
+        values (@Nombre, @Direccion, @Telefono, @Email, @UsuarioID, 3);
+
+        set @Registrado = 1;
+        set @Mensaje = 'Usuario y cliente registrados con éxito.';
+    end
+    else
+    begin
+        set @Registrado = 0;
+        set @Mensaje = 'El correo ya está registrado.';
+    end
+end
+
+create proc ValidarUsuario(
+@Email varchar(100),
+@clave varchar(500)
+)
+as
+begin
+	if(exists(select * from Usuario where Email = @Email and Clave = @clave))
+		select UsuarioID from Usuario where Email = @Email and Clave = @clave
+		else 
+		select '0'
+end

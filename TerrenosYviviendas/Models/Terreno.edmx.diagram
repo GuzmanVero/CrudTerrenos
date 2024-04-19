@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="802c690cae464bf187c08a32d914edfb" Name="Diagram1">
+        <EntityTypeShape EntityType="CostaDelSolModel.Area" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Carro" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Cliente" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Departamento" Width="1.5" PointX="1.5" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Distrito" Width="1.5" PointX="1.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Empleado" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Marca" Width="1.5" PointX="1.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Participaciones" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Posicion" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Producto" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Propietario" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Rol" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Subasta" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Terreno" Width="1.5" PointX="1.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Tipo" Width="1.5" PointX="1.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Transaccion" Width="1.5" PointX="11.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CostaDelSolModel.Usuario" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Empleado__AreaID__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Carro__MarcaID__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Carro__Propietar__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Producto__CarroI__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Participa__Clien__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Transacci__Clien__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Cliente_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Cliente_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Distrito_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Terreno__Distrit__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Empleado__Posici__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Transacci__Emple__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Empleado_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Empleado_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Participa__Subas__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Producto__Terren__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Subasta_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK_Transaccion_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Terreno__Propiet__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="CostaDelSolModel.FK__Terreno__TipoID__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,66 @@
+﻿@model Terrenos2.Models.Transaccion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpleadoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpleadoID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductoID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TransaccionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

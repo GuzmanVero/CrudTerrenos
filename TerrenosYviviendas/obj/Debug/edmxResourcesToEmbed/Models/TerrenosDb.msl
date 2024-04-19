@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CostaDelSolModel1StoreContainer" CdmEntityContainer="CostaDelSolEntities1">
+    <EntitySetMapping Name="Carro">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Carro">
+        <MappingFragment StoreEntitySet="Carro">
+          <ScalarProperty Name="CarroID" ColumnName="CarroID" />
+          <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="PropietarioID" ColumnName="PropietarioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+          <ScalarProperty Name="Departamento1" ColumnName="Departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="PosicionID" ColumnName="PosicionID" />
+          <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+          <ScalarProperty Name="Teléfono" ColumnName="Teléfono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marca">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Marca">
+        <MappingFragment StoreEntitySet="Marca">
+          <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+          <ScalarProperty Name="Marca1" ColumnName="Marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participaciones">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Participaciones">
+        <MappingFragment StoreEntitySet="Participaciones">
+          <ScalarProperty Name="ParticipaciónID" ColumnName="ParticipaciónID" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="SubastaID" ColumnName="SubastaID" />
+          <ScalarProperty Name="Oferta" ColumnName="Oferta" />
+          <ScalarProperty Name="FechaOferta" ColumnName="FechaOferta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posicion">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Posicion">
+        <MappingFragment StoreEntitySet="Posicion">
+          <ScalarProperty Name="PosicionID" ColumnName="PosicionID" />
+          <ScalarProperty Name="Posicion1" ColumnName="Posicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subasta">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Subasta">
+        <MappingFragment StoreEntitySet="Subasta">
+          <ScalarProperty Name="SubastaID" ColumnName="SubastaID" />
+          <ScalarProperty Name="TerrenoID" ColumnName="TerrenoID" />
+          <ScalarProperty Name="CarroID" ColumnName="CarroID" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="PrecioInicial" ColumnName="PrecioInicial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Terreno">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Terreno">
+        <MappingFragment StoreEntitySet="Terreno">
+          <ScalarProperty Name="TerrenoID" ColumnName="TerrenoID" />
+          <ScalarProperty Name="NombreTerreno" ColumnName="NombreTerreno" />
+          <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+          <ScalarProperty Name="Extencion" ColumnName="Extencion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="PropietarioID" ColumnName="PropietarioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Tipo">
+        <MappingFragment StoreEntitySet="Tipo">
+          <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+          <ScalarProperty Name="Tipo1" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transaccion">
+      <EntityTypeMapping TypeName="CostaDelSolModel1.Transaccion">
+        <MappingFragment StoreEntitySet="Transaccion">
+          <ScalarProperty Name="TransaccionID" ColumnName="TransaccionID" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+          <ScalarProperty Name="TerrenoID" ColumnName="TerrenoID" />
+          <ScalarProperty Name="CarroID" ColumnName="CarroID" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

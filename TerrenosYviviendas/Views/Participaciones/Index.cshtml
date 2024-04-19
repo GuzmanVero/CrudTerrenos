@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Terrenos2.Models.Participaciones>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParticipaciónID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClienteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubastaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oferta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaOferta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParticipaciónID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClienteID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubastaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oferta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaOferta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

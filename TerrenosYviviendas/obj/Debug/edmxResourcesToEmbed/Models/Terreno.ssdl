@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CostaDelSolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="AreaID" />
+    </Key>
+    <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carro">
+    <Key>
+      <PropertyRef Name="CarroID" />
+    </Key>
+    <Property Name="CarroID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MarcaID" Type="int" Nullable="false" />
+    <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripción" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PropietarioID" Type="int" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+    </Key>
+    <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" />
+    <Property Name="RolID" Type="int" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="DepartamentoID" />
+    </Key>
+    <Property Name="DepartamentoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Departamento" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Distrito">
+    <Key>
+      <PropertyRef Name="DistritoID" />
+    </Key>
+    <Property Name="DistritoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Distrito" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartamentoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="EmpleadoID" />
+    </Key>
+    <Property Name="EmpleadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PosicionID" Type="int" Nullable="false" />
+    <Property Name="AreaID" Type="int" Nullable="false" />
+    <Property Name="Teléfono" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SaldoNeto" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="SaldoLiquido" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" />
+    <Property Name="RolID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Marca">
+    <Key>
+      <PropertyRef Name="MarcaID" />
+    </Key>
+    <Property Name="MarcaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participaciones">
+    <Key>
+      <PropertyRef Name="ParticipaciónID" />
+    </Key>
+    <Property Name="ParticipaciónID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteID" Type="int" Nullable="false" />
+    <Property Name="SubastaID" Type="int" Nullable="false" />
+    <Property Name="Oferta" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FechaOferta" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Posicion">
+    <Key>
+      <PropertyRef Name="PosicionID" />
+    </Key>
+    <Property Name="PosicionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Posicion" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="ProductoID" />
+    </Key>
+    <Property Name="ProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerrenoID" Type="int" />
+    <Property Name="CarroID" Type="int" />
+  </EntityType>
+  <EntityType Name="Propietario">
+    <Key>
+      <PropertyRef Name="PropietarioID" />
+    </Key>
+    <Property Name="PropietarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="RolID" />
+    </Key>
+    <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rol" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subasta">
+    <Key>
+      <PropertyRef Name="SubastaID" />
+    </Key>
+    <Property Name="SubastaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductoID" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaFin" Type="datetime" Nullable="false" />
+    <Property Name="PrecioInicial" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Terreno">
+    <Key>
+      <PropertyRef Name="TerrenoID" />
+    </Key>
+    <Property Name="TerrenoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreTerreno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TipoID" Type="int" Nullable="false" />
+    <Property Name="Extencion" Type="float" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DistritoID" Type="int" Nullable="false" />
+    <Property Name="PropietarioID" Type="int" />
+  </EntityType>
+  <EntityType Name="Tipo">
+    <Key>
+      <PropertyRef Name="TipoID" />
+    </Key>
+    <Property Name="TipoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transaccion">
+    <Key>
+      <PropertyRef Name="TransaccionID" />
+    </Key>
+    <Property Name="TransaccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteID" Type="int" Nullable="false" />
+    <Property Name="EmpleadoID" Type="int" Nullable="false" />
+    <Property Name="ProductoID" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Carro__MarcaID__52593CB8">
+    <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+    <End Role="Carro" Type="Self.Carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="MarcaID" />
+      </Principal>
+      <Dependent Role="Carro">
+        <PropertyRef Name="MarcaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Carro__Propietar__5165187F">
+    <End Role="Propietario" Type="Self.Propietario" Multiplicity="0..1" />
+    <End Role="Carro" Type="Self.Carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Propietario">
+        <PropertyRef Name="PropietarioID" />
+      </Principal>
+      <Dependent Role="Carro">
+        <PropertyRef Name="PropietarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleado__AreaID__403A8C7D">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="AreaID" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleado__Posici__3F466844">
+    <End Role="Posicion" Type="Self.Posicion" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posicion">
+        <PropertyRef Name="PosicionID" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="PosicionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Participa__Clien__5FB337D6">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Participaciones" Type="Self.Participaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteID" />
+      </Principal>
+      <Dependent Role="Participaciones">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Participa__Subas__60A75C0F">
+    <End Role="Subasta" Type="Self.Subasta" Multiplicity="1" />
+    <End Role="Participaciones" Type="Self.Participaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subasta">
+        <PropertyRef Name="SubastaID" />
+      </Principal>
+      <Dependent Role="Participaciones">
+        <PropertyRef Name="SubastaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producto__CarroI__778AC167">
+    <End Role="Carro" Type="Self.Carro" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carro">
+        <PropertyRef Name="CarroID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="CarroID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producto__Terren__76969D2E">
+    <End Role="Terreno" Type="Self.Terreno" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terreno">
+        <PropertyRef Name="TerrenoID" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="TerrenoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Terreno__Distrit__4BAC3F29">
+    <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+    <End Role="Terreno" Type="Self.Terreno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distrito">
+        <PropertyRef Name="DistritoID" />
+      </Principal>
+      <Dependent Role="Terreno">
+        <PropertyRef Name="DistritoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Terreno__Propiet__49C3F6B7">
+    <End Role="Propietario" Type="Self.Propietario" Multiplicity="0..1" />
+    <End Role="Terreno" Type="Self.Terreno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Propietario">
+        <PropertyRef Name="PropietarioID" />
+      </Principal>
+      <Dependent Role="Terreno">
+        <PropertyRef Name="PropietarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Terreno__TipoID__4AB81AF0">
+    <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+    <End Role="Terreno" Type="Self.Terreno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo">
+        <PropertyRef Name="TipoID" />
+      </Principal>
+      <Dependent Role="Terreno">
+        <PropertyRef Name="TipoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__Clien__5629CD9C">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteID" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__Emple__571DF1D5">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="EmpleadoID" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="EmpleadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Distrito_Departamento">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+    <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="DepartamentoID" />
+      </Principal>
+      <Dependent Role="Distrito">
+        <PropertyRef Name="DepartamentoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subasta_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Subasta" Type="Self.Subasta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ProductoID" />
+      </Principal>
+      <Dependent Role="Subasta">
+        <PropertyRef Name="ProductoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaccion_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ProductoID" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="ProductoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CostaDelSolModelStoreContainer">
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carro" EntityType="Self.Carro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participaciones" EntityType="Self.Participaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posicion" EntityType="Self.Posicion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Propietario" EntityType="Self.Propietario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subasta" EntityType="Self.Subasta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Terreno" EntityType="Self.Terreno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaccion" EntityType="Self.Transaccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Carro__MarcaID__52593CB8" Association="Self.FK__Carro__MarcaID__52593CB8">
+      <End Role="Marca" EntitySet="Marca" />
+      <End Role="Carro" EntitySet="Carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Carro__Propietar__5165187F" Association="Self.FK__Carro__Propietar__5165187F">
+      <End Role="Propietario" EntitySet="Propietario" />
+      <End Role="Carro" EntitySet="Carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleado__AreaID__403A8C7D" Association="Self.FK__Empleado__AreaID__403A8C7D">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleado__Posici__3F466844" Association="Self.FK__Empleado__Posici__3F466844">
+      <End Role="Posicion" EntitySet="Posicion" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Participa__Clien__5FB337D6" Association="Self.FK__Participa__Clien__5FB337D6">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Participaciones" EntitySet="Participaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Participa__Subas__60A75C0F" Association="Self.FK__Participa__Subas__60A75C0F">
+      <End Role="Subasta" EntitySet="Subasta" />
+      <End Role="Participaciones" EntitySet="Participaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__CarroI__778AC167" Association="Self.FK__Producto__CarroI__778AC167">
+      <End Role="Carro" EntitySet="Carro" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__Terren__76969D2E" Association="Self.FK__Producto__Terren__76969D2E">
+      <End Role="Terreno" EntitySet="Terreno" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Terreno__Distrit__4BAC3F29" Association="Self.FK__Terreno__Distrit__4BAC3F29">
+      <End Role="Distrito" EntitySet="Distrito" />
+      <End Role="Terreno" EntitySet="Terreno" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Terreno__Propiet__49C3F6B7" Association="Self.FK__Terreno__Propiet__49C3F6B7">
+      <End Role="Propietario" EntitySet="Propietario" />
+      <End Role="Terreno" EntitySet="Terreno" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Terreno__TipoID__4AB81AF0" Association="Self.FK__Terreno__TipoID__4AB81AF0">
+      <End Role="Tipo" EntitySet="Tipo" />
+      <End Role="Terreno" EntitySet="Terreno" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__Clien__5629CD9C" Association="Self.FK__Transacci__Clien__5629CD9C">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__Emple__571DF1D5" Association="Self.FK__Transacci__Emple__571DF1D5">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Rol" Association="Self.FK_Cliente_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Usuario" Association="Self.FK_Cliente_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Distrito_Departamento" Association="Self.FK_Distrito_Departamento">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Distrito" EntitySet="Distrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Rol" Association="Self.FK_Empleado_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Usuario" Association="Self.FK_Empleado_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subasta_Producto" Association="Self.FK_Subasta_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Subasta" EntitySet="Subasta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaccion_Producto" Association="Self.FK_Transaccion_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
